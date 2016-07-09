@@ -1,7 +1,11 @@
 <%= render 'breadcrumbs', challenge: @challenge %>
 
 <h1>
-  <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-default" %>
+  <% if true %>
+    <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-default" %>
+    <%= link_to 'Destroy', @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  <% end %>
+
   <%= @challenge.name %>
 </h1>
 

@@ -1,5 +1,8 @@
+<% categories = %w(basic intermediate advanced mobile business hacking) %>
+
 <%= bootstrap_form_for(challenge) do |f| %>
   <%= f.text_field :name %>
+  <%= f.select :category, categories, { label: "Categry:" } %>
   <%= f.check_box :is_locked %>
   <%= f.text_area :description, markdown: true %>
   <%= f.submit "Save", class: "btn btn-lg btn-primary" %>

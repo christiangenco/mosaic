@@ -4,6 +4,9 @@
   </li>
   <% if challenge %>
     <li>
+      <%= link_to challenge.category, challenges_path(anchor: challenge.category) %>
+    </li>
+    <li>
       <%= link_to challenge.name, challenge %>
     </li>
   <% end %>

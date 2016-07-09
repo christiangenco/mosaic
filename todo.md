@@ -1,7 +1,5 @@
 # Next
 
-* breadcrums instead of "back"
-* challenges have tags
 * devise make user with username
 * admin guards
 * challenges have comments
