@@ -50,6 +50,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap_form (2.4.0)
     builder (3.2.2)
     byebug (9.0.5)
     coderay (1.1.1)
@@ -202,6 +203,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   bootstrap-sass (~> 3.3.6)
+  bootstrap_form
   byebug
   devise
   font-awesome-rails

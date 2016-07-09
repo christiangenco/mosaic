@@ -1,32 +1,6 @@
-<%= form_for(challenge) do |f| %>
-  <% if challenge.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(challenge.errors.count, "error") %> prohibited this challenge from being saved:</h2>
-
-      <ul>
-      <% challenge.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :is_locked %>
-    <%= f.text_field :is_locked %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= bootstrap_form_for(challenge) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.check_box :is_locked %>
+  <%= f.text_area :description, markdown: true %>
+  <%= f.submit "Save" %>
 <% end %>
