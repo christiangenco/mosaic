@@ -1,3 +1,14 @@
-* ber g scaffold challenge description:text name:string is_locked:bool tags comments
+# Next
+
+* breadcrums instead of "back"
+* challenges have tags
+* devise make user with username
+* admin guards
+* challenges have comments
 * ber g scaffold submission challenge:references user:references is_public:bool approved_at:datetime denied_at:datetime url:string comments likes
-* ber g user name:string email:string phone:string username:string
+* submissions have comments
+
+---
+
+* way to submit surveys?
+* submission default is_public changes with each submission; remembers for the next one
