@@ -1,19 +1,8 @@
-<p id="notice"><%= notice %></p>
+<%= render 'breadcrumbs', challenge: @challenge %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @challenge.description %>
-</p>
-
-<p>
-  <strong>Name:</strong>
+<h1>
+  <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-default" %>
   <%= @challenge.name %>
-</p>
+</h1>
 
-<p>
-  <strong>Is locked:</strong>
-  <%= @challenge.is_locked %>
-</p>
-
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Back', challenges_path %>
+<%= markdown(@challenge.description).html_safe %>

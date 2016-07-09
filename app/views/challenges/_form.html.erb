@@ -2,5 +2,6 @@
   <%= f.text_field :name %>
   <%= f.check_box :is_locked %>
   <%= f.text_area :description, markdown: true %>
-  <%= f.submit "Save" %>
+  <%= f.submit "Save", class: "btn btn-lg btn-primary" %>
+  <%= link_to 'Cancel', challenge.new_record? ? challenges_path : challenge, class: "btn btn-lg btn-default" %>
 <% end %>

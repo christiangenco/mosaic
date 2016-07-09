@@ -1,0 +1,11 @@
+<ol class="breadcrumb">
+  <li>
+    <%= link_to 'Challenges', challenges_path %>
+  </li>
+  <% if challenge %>
+    <li>
+      <%= link_to challenge.name, challenge %>
+    </li>
+  <% end %>
+  <!-- <li class="active">Data</li> -->
+</ol>
