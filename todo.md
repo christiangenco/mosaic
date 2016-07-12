@@ -1,10 +1,10 @@
 # Next
 
-* devise make user with username
 * admin guards
 * challenges have comments
 * ber g scaffold submission challenge:references user:references is_public:bool approved_at:datetime denied_at:datetime url:string comments likes
 * submissions have comments
+* submissions have likes
 * see your and public submissions once you've made one submission
 
 ---

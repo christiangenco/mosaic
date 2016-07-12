@@ -22,9 +22,11 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><%= fa_icon :bell %></a></li>
-        <li class="dropdown">
-          <%= render 'navbar/signin_dropdown_form' %>
-        </li>
+        <% if user_signed_in? %>
+          <%= render 'navbar/user_info' %>
+        <% else %>
+          <%= render 'navbar/signin' %>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
