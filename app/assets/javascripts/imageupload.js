@@ -1,8 +1,3 @@
-window.cloudinary = {
-  "api_key":"625568555693665",
-  "cloud_name":"genco",
-  "upload_preset": "dtxrfjqg"
-}
 var cloudinaryURL = "https://api.cloudinary.com/v1_1/" + cloudinary.cloud_name + "/image/upload";
 
 function getFileBytes(file){
@@ -45,30 +40,6 @@ window.imageupload = function(file){
 
         }
       };
-      // jQuery.ajax({
-      //   url: cloudinaryURL,
-      //   data: data,
-      //   type: 'POST'
-      //   // cache: false,
-      //   // contentType: false,
-      //   // processData: false,
-      //   // headers: {},
-      //   // headers: {
-      //   //   'Content-Type': undefined,
-      //   //   'X-Requested-With': 'XMLHttpRequest',
-      //   //   'Accept': 'application/json'
-      //   //   // 'Access-Control-Request-Headers': 'accept, authorization, content-type',
-      //   //   // 'Access-Control-Request-Method': 'POST'
-      //   // },
-      //   // crossDomain: true,
-      //   // success: function(data){
-      //   //   console.dir(data);
-      //   //   resolve(data)
-      //   // }
-      // }).then(resolve).fail(reject);
-      // }).then(function(res){
-        // console.dir(res)
-      // }).fail(reject);
     })
   });
 }

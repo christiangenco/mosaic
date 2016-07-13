@@ -16,6 +16,4 @@
 //= require turbolinks
 //= require simplemde.min
 //= require highlight.min
-//= require cloudinary
-// require dropzone
 //= require_tree .

@@ -52,6 +52,7 @@ group :development do
   # gem 'quiet_assets'
   gem 'rails_apps_pages'
   gem 'rails_layout'
+  gem 'dotenv-rails'
 end
 
 group :production do
