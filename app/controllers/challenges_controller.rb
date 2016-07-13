@@ -20,6 +20,13 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/1/edit
   def edit
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+    headers['Access-Control-Request-Method'] = '*'
+    headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    headers['Access-Control-Request-Headers'] = 'accept, authorization, content-type'
+    headers['Access-Control-Request-Method'] = 'POST'
+
   end
 
   # POST /challenges

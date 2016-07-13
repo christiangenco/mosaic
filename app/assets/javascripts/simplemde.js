@@ -22,6 +22,22 @@ document.addEventListener("turbolinks:load", function() {
       tabSize: 2,
       // toolbar: [],
      });
-    console.dir(e);
-  })
-})
+    // console.dir(e);
+
+    simplemde.codemirror.on("drop", function(cm, e){
+      // e.preventDefault();  // stop default behaviour
+      console.dir(e);
+      // console.dir(e.dataTransfer.files[0])
+      imageupload(e.dataTransfer.files[0]).then(function(imageData){
+        console.info("Success:")
+        console.dir(imageData)
+      }).catch(function(error){
+        console.info("There was an error returned:", error.responseText)
+        // console.dir(error)
+      });
+      // return false;
+    });
+
+    // console.dir(simplemde)
+  });
+});

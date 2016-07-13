@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* CodeMrror editor : http://codemirror.net/doc/manual.html#event_beforeChange
+* Dropzone + Cloudinary: https://danhough.com/blog/dropzone-cloudinary/
+* Cloudinary API: http://cloudinary.com/documentation/upload_images#uploading_with_a_direct_call_to_the_api

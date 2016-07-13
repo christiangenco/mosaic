@@ -1,5 +1,6 @@
 # Next
 
+* drag and drop images
 * challenges have comments
 * submissions have comments
 * submissions have likes
@@ -17,7 +18,6 @@
 * admin guards
 * way to submit surveys?
 * submission default is_public changes with each submission; remembers for the next one
-* drag and drop images to upload them?
 * I can give users emoji badges
 * users can set their own XP goals? for the class? for the day?
 * users can privately message me saying someone else deserves a badge, like helping

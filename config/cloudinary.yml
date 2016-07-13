@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: genco
+  api_key: '625568555693665'
+  api_secret: pAdXJfArvoMi47L8hsSD39NwWEg
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: genco
+  api_key: '625568555693665'
+  api_secret: pAdXJfArvoMi47L8hsSD39NwWEg
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: genco
+  api_key: '625568555693665'
+  api_secret: pAdXJfArvoMi47L8hsSD39NwWEg
+  enhance_image_tag: true
+  static_image_support: false
