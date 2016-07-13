@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712024550) do
+ActiveRecord::Schema.define(version: 20160713020658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 20160712024550) do
     t.datetime "updated_at",  null: false
     t.text     "tags"
     t.string   "category"
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer  "challenge_id"
+    t.integer  "user_id"
+    t.boolean  "is_private",   default: false
+    t.datetime "approved_at"
+    t.datetime "denied_at"
+    t.string   "url"
+    t.text     "content"
+    t.integer  "points",       default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["challenge_id"], name: "index_submissions_on_challenge_id", using: :btree
+    t.index ["user_id"], name: "index_submissions_on_user_id", using: :btree
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -70,4 +85,6 @@ ActiveRecord::Schema.define(version: 20160712024550) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "submissions", "challenges"
+  add_foreign_key "submissions", "users"
 end

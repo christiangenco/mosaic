@@ -35,7 +35,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'
   gem 'pry-rescue'
-  # gem 'binding_of_caller'
+  gem 'binding_of_caller'
   gem 'rubocop'
 end
 

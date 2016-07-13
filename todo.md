@@ -1,6 +1,5 @@
 # Next
 
-* ber g scaffold submission challenge:references user:references is_private:bool approved_at:datetime denied_at:datetime url:string content:text points:integer comments likes is_private default false
 * challenges have comments
 * submissions have comments
 * submissions have likes

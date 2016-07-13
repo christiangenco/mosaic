@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   }
   # devise_for :users
 
-  resources :challenges
+  resources :challenges do
+    resources :submissions
+  end
   root to: "challenges#index"
 end

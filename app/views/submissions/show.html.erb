@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Challenge:</strong>
+  <%= @submission.challenge %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @submission.user %>
+</p>
+
+<p>
+  <strong>Is private:</strong>
+  <%= @submission.is_private %>
+</p>
+
+<p>
+  <strong>Approved at:</strong>
+  <%= @submission.approved_at %>
+</p>
+
+<p>
+  <strong>Denied at:</strong>
+  <%= @submission.denied_at %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @submission.url %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @submission.content %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @submission.points %>
+</p>
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>
