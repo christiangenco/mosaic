@@ -9,6 +9,8 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/1
   def show
+    # @challenge.includes(:submissions)
+    @submissions = @challenge.submissions
   end
 
   # GET /challenges/new

@@ -1,7 +1,7 @@
 <%# render 'breadcrumbs', challenge: @challenge %>
 
 <h1>
-  <% if true %>
+  <% if admin? %>
     <div class="pull-right">
       <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-default" %>
       <%= link_to 'Destroy', @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
@@ -11,8 +11,23 @@
   <%= @challenge.name %>
 </h1>
 
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Description</a></li>
+  <li role="presentation"><a href="#">Submissions</a></li>
+</ul>
+
+<br>
+
 <%= markdown(@challenge.description).html_safe %>
 
 <hr>
 
-f.hidden_field
+<%=
+  render 'submissions/form',
+  challenge: @challenge,
+  submission: Submission.new
+%>
+
+<h2>Submissions</h2>
+
+<%= render 'submissions/list', submissions: @submissions %>

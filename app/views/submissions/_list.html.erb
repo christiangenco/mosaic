@@ -1,0 +1,7 @@
+<ul>
+  <% submissions.each do |submission| %>
+    <% if submission.public? || submission.viewable_by?(current_user) %>
+      <li><%= link_to submission.url %> - <%= link_to submission.user_id %></li>
+    <% end %>
+  <% end %>
+</ul>
