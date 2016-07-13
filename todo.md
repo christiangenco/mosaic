@@ -1,14 +1,21 @@
 # Next
 
-* admin guards
+* ber g scaffold submission challenge:references user:references is_private:bool approved_at:datetime denied_at:datetime url:string content:text points:integer comments likes is_private default false
 * challenges have comments
-* ber g scaffold submission challenge:references user:references is_public:bool approved_at:datetime denied_at:datetime url:string comments likes
 * submissions have comments
 * submissions have likes
 * see your and public submissions once you've made one submission
+* user leaderboard
 
 ---
 
+# Lessons
+
+* first lesson is just "copy and paste this"
+
+---
+
+* admin guards
 * way to submit surveys?
 * submission default is_public changes with each submission; remembers for the next one
 * drag and drop images to upload them?
