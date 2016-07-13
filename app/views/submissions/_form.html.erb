@@ -1,7 +1,8 @@
-<%= bootstrap_form_for([challenge, submission], layout: :inline) do |f| %>
+<!-- layout: :inline -->
+<%= bootstrap_form_for([challenge, submission]) do |f| %>
   <%= f.alert_message "Please fix the errors below." %>
   <%= f.url_field :url, hide_label: true, placeholder: "URL" %>
   <%# f.text_area :content %>
   <%= f.check_box :is_private, label: "Private" %>
-  <%= f.submit "Send", class: 'btn btn-info' %>
+  <%= f.submit "Send", class: 'btn btn-info btn-block btn-lg' %>
 <% end %>

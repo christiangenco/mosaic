@@ -25,15 +25,32 @@ document.addEventListener("turbolinks:load", function() {
     // console.dir(e);
 
     simplemde.codemirror.on("drop", function(cm, e){
-      // e.preventDefault();  // stop default behaviour
-      console.dir(e);
-      // console.dir(e.dataTransfer.files[0])
-      imageupload(e.dataTransfer.files[0]).then(function(imageData){
-        console.info("Success:")
-        console.dir(imageData)
+      if(e.dataTransfer.files.length == 0) return true;
+      e.preventDefault();
+
+      window.cm = cm;
+      console.dir(cm);
+      console.dir(cm.display.cursorDiv.childElementCount)
+      // cm.replaceRange("hi", {line: 1, ch: 0})
+      // cm.replaceRange("hi", cm.getCursor())
+      // console.dir(cm.getCursor())
+      // return;
+
+      var progress = function(e){
+        console.dir(e);
+        if (e.lengthComputable){
+          var percent = (e.loaded / e.total)*100;
+          console.dir(percent);
+        }
+      }
+      imageupload(e.dataTransfer.files[0], progress).then(function(image){
+        console.info("Success:");
+        console.dir(image);
+        var imageCode = "![" + image.original_filename + "](" + image.secure_url + ")"
+        cm.replaceRange(imageCode, cm.getCursor())
       }).catch(function(error){
-        console.info("There was an error returned:", error.responseText)
-        // console.dir(error)
+        console.info("There was an error returned:")
+        console.dir(error)
       });
       // return false;
     });

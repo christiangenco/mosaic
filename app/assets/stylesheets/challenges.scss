@@ -1,3 +1,11 @@
 // Place all the styles related to the challenges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.challenge-description, .editor-preview-side{
+  img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+   }
+}

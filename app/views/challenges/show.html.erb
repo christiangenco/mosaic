@@ -13,12 +13,17 @@
 
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="#">Description</a></li>
+  <li role="presentation"><a href="#">Questions</a></li>
   <li role="presentation"><a href="#">Submissions</a></li>
 </ul>
 
 <br>
 
-<%= markdown(@challenge.description).html_safe %>
+<div class="row">
+  <div class="challenge-description col-md-8">
+    <%= markdown(@challenge.description).html_safe %>
+  </div>
+</div>
 
 <hr>
 
@@ -28,6 +33,4 @@
   submission: Submission.new
 %>
 
-<h2>Submissions</h2>
-
-<%= render 'submissions/list', submissions: @submissions %>
+<%# render 'submissions/list', submissions: @submissions %>
