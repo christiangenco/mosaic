@@ -11,26 +11,40 @@
   <%= @challenge.name %>
 </h1>
 
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Description</a></li>
-  <li role="presentation"><a href="#">Questions</a></li>
-  <li role="presentation"><a href="#">Submissions</a></li>
-</ul>
-
 <br>
-
-<div class="row">
-  <div class="challenge-description col-md-8">
-    <%= markdown(@challenge.description).html_safe %>
-  </div>
-</div>
-
-<hr>
 
 <%=
   render 'submissions/form',
   challenge: @challenge,
   submission: Submission.new
 %>
+
+<!-- <hr> -->
+
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#instructions" aria-controls="instructions" role="tab" data-toggle="tab">Instructions</a></li>
+    <li role="presentation"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Questions</a></li>
+    <li role="presentation"><a href="#solutions" aria-controls="solutions" role="tab" data-toggle="tab">Solutions</a></li>
+  </ul>
+
+  <br>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="instructions">
+      <div class="row">
+        <div class="challenge-description col-md-8">
+          <%= markdown(@challenge.description).html_safe %>
+        </div>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="questions">questions</div>
+    <div role="tabpanel" class="tab-pane" id="solutions">solutions</div>
+  </div>
+
+</div>
+
 
 <%# render 'submissions/list', submissions: @submissions %>

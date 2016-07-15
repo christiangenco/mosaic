@@ -1,9 +1,9 @@
 <!-- <h1>Challenges</h1> -->
 
-<% @challenges.group_by(&:category).each do |category, challenges| %>
+<% @challenges.group_by(&:category).sort_by{|c,_| c}.each do |category, challenges| %>
   <h2><a name="<%= category %>"></a><%= category %></h2>
   <div class="list-group">
-    <% challenges.each do |challenge| %>
+    <% challenges.sort_by{|c| c.name}.each do |challenge| %>
       <!-- classes: disabled list-group-item-success list-group-item-info list-group-item-warning list-group-item-danger -->
       <a href="<%= challenge_url(challenge) %>" class="list-group-item">
         <!-- <span class="badge">14</span> -->
@@ -16,3 +16,4 @@
 <br>
 
 <%= link_to 'New Challenge', new_challenge_path, class: 'btn btn-success' %>
+
