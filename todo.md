@@ -4,8 +4,6 @@
 
 # Next
 
-* order challenges
-* challenge#show has tabbed layout
 * see your and public submissions once you've made one submission
 * I can review/approve/give points to a submission
 * user has cumulative points

@@ -12,6 +12,11 @@ module ApplicationHelper
     @markdown.render(content)
   end
 
+  def strip_order(str="")
+    str =~ /[\d\.]+\s*(.*)/
+    $1 || str
+  end
+
   def admin?
     user_signed_in? && current_user.admin?
   end
