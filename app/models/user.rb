@@ -8,4 +8,8 @@ class User < ApplicationRecord
   def admin?
     email == "christian.genco@gmail.com"
   end
+
+  def display_name
+    username || name || email
+  end
 end

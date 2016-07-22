@@ -4,6 +4,7 @@
   <%= f.text_field :name %>
   <%= f.select :category, categories, { label: "Categry:" } %>
   <%= f.check_box :is_locked %>
+  <%= f.number_field :points %>
   <%= f.text_area :description, markdown: true %>
   <%= f.submit "Save", class: "btn btn-lg btn-primary" %>
   <%= link_to 'Cancel', challenge.new_record? ? challenges_path : challenge, class: "btn btn-lg btn-default" %>

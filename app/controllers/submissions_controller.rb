@@ -37,9 +37,17 @@ class SubmissionsController < ApplicationController
   # PATCH/PUT /submissions/1
   def update
     if @submission.update(submission_params)
-      redirect_to @submission, notice: 'Submission was successfully updated.'
+      if request.xhr?
+        render :json => {success: true}
+      else
+        redirect_to @submission, notice: 'Submission was successfully updated.'
+      end
     else
-      render :edit
+      if request.xhr?
+        render :json => @submission.errors, :status => :unprocessable_entity
+      else
+        render :edit
+      end
     end
   end
 

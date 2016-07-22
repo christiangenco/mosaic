@@ -7,6 +7,6 @@ class Submission < ApplicationRecord
   end
 
   def viewable_by?(user)
-    user.try(:admin?) || user_id == user.id
+    user.try(:admin?) || user_id == user.try(:id)
   end
 end

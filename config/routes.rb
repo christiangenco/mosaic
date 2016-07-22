@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   # devise_for :users
 
   resources :challenges do
-    resources :submissions
+    resources :submissions do
+      member do
+      end
+    end
+
   end
   root to: "challenges#index"
 end
