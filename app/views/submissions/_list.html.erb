@@ -1,7 +1,45 @@
-<ul>
+<div class="list-group">
   <% submissions.each do |submission| %>
     <% if submission.public? || submission.viewable_by?(current_user) %>
-      <li><%= link_to submission.url %> - <%= link_to submission.user_id %></li>
+      <a href="<%= submission.url %>" class="list-group-item list-group-item-warning">
+        <%# link_to submission.url, submission.url, target: "_blank" %>
+        <p class="list-group-item-text">
+          <div class="pull-right">
+            <%= html_button_to fa_icon('thumbs-up', text: "Like"), "#", class: 'btn btn-default btn-sm', remote: true %>
+
+            <% if admin? || submission.user == current_user %>
+              <%= html_button_to fa_icon('trash', text: "delete"), "#", class: 'btn btn-danger btn-sm', remote: true %>
+            <% end %>
+
+            <% if admin? %>
+              <%= html_button_to fa_icon('times'), "#", class: 'icon-search icon-large btn btn-default btn-sm icon-facebook-sign', remote: true %>
+              <%= html_button_to fa_icon('check'), "#", class: 'btn btn-default btn-sm', remote: true %>
+              <%= html_button_to fa_icon('check', text: "+"), "#", class: 'btn btn-default btn-sm', remote: true %>
+            <% end %>
+          </div>
+
+          <%= submission.url %>
+          <small>solved <%= time_ago_in_words submission.created_at %> ago</small>
+
+        </p>
+        <!-- <h4 class="list-group-item-heading">List group item heading</h4> -->
+        <!-- <p class="list-group-item-text"> -->
+        <!-- </p> -->
+        <div class="clearfix"></div>
+      </a>
     <% end %>
   <% end %>
+</div>
+
+<% if submissions.empty? %>
+No solutions yet.
+<% end %>
+
+<ul class="list-group">
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item disabled">Dapibus ac facilisis in</li>
+  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
 </ul>

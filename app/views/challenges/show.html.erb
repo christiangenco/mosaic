@@ -24,9 +24,19 @@
 <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#instructions" aria-controls="instructions" role="tab" data-toggle="tab">Instructions</a></li>
-    <li role="presentation"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">Questions</a></li>
-    <li role="presentation"><a href="#solutions" aria-controls="solutions" role="tab" data-toggle="tab">Solutions</a></li>
+    <li role="presentation" class="active"><a href="#instructions" aria-controls="instructions" role="tab" data-toggle="tab">
+      <%= fa_icon('book') %>
+      Instructions
+    </a></li>
+    <li role="presentation"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">
+      <%= fa_icon('comments') %>
+      Questions
+    </a></li>
+    <li role="presentation"><a href="#solutions" aria-controls="solutions" role="tab" data-toggle="tab">
+      <%= fa_icon('puzzle-piece') %>
+      Solutions
+      <span class="badge"><%= @submissions.size %></span>
+    </a></li>
   </ul>
 
   <br>
@@ -41,7 +51,13 @@
       </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="questions">questions</div>
-    <div role="tabpanel" class="tab-pane" id="solutions">solutions</div>
+    <div role="tabpanel" class="tab-pane" id="solutions">
+      <div class="row">
+        <div class="col-md-8">
+          <%= render 'submissions/list', submissions: @challenge.submissions %>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
-  before_action :set_challenge, only: [:show, :edit, :update, :destroy]
+  before_action :set_challenge, only: [:edit, :update, :destroy]
+  before_action :set_challenge_with_submissions, only: [:show]
   # before_action :authenticate_user!
 
   # GET /challenges
@@ -9,8 +10,8 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/1
   def show
-    # @challenge.includes(:submissions)
-    @submissions = @challenge.submissions
+    # # @challenge.includes(:submissions)
+    # @submissions = @challenge.submissions
   end
 
   # GET /challenges/new
@@ -59,6 +60,11 @@ class ChallengesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge
       @challenge = Challenge.find(params[:id])
+    end
+
+    def set_challenge_with_submissions
+      @challenge = Challenge.includes(:submissions).find(params[:id])
+      @submissions = @challenge.submissions
     end
 
     # Only allow a trusted parameter "white list" through.

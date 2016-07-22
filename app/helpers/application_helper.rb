@@ -20,4 +20,10 @@ module ApplicationHelper
   def admin?
     user_signed_in? && current_user.admin?
   end
+
+  def html_button_to(html = nil, options = nil, html_options = nil)
+    button_to(options, html_options) do
+      html
+    end
+  end
 end
