@@ -1,6 +1,8 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :set_challenge, only: [:show, :edit, :update, :create]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :ensure_admin!, except: [:index, :show, :new, :create]
 
   # GET /submissions
   def index

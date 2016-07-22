@@ -1,11 +1,13 @@
 <div class="list-group">
   <% submissions.each do |submission| %>
     <% if submission.public? || submission.viewable_by?(current_user) %>
-      <a href="<%= submission.url %>" class="list-group-item list-group-item-warning" target="_blank">
+      <a href="<%= submission.url %>" class="list-group-item" target="_blank">
         <%# link_to submission.url, submission.url, target: "_blank" %>
         <p class="list-group-item-text">
           <div class="pull-right">
-            <%= html_button_to fa_icon('thumbs-up', text: "Like"), "#", class: 'btn btn-default btn-sm', remote: true %>
+            <% if current_user %>
+              <%= html_button_to fa_icon('thumbs-up', text: "Like"), "#", class: 'btn btn-default btn-sm', remote: true %>
+            <% end %>
 
             <% if admin? || submission.user == current_user %>
               <%= html_button_to fa_icon('trash', text: ""), "#", class: 'btn btn-danger btn-sm', remote: true %>

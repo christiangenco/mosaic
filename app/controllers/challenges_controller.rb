@@ -1,6 +1,8 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:edit, :update, :destroy]
   before_action :set_challenge_with_submissions, only: [:show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :ensure_admin!, except: [:index, :show, :new, :create]
   # before_action :authenticate_user!
 
   # GET /challenges
