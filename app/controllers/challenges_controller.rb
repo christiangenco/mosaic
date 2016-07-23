@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: [:edit, :update, :destroy]
   before_action :set_challenge_with_submissions, only: [:show]
+
   before_action :authenticate_user!, except: [:index, :show]
   before_action :ensure_admin!, except: [:index, :show, :new, :create]
   # before_action :authenticate_user!
@@ -59,7 +60,9 @@ class ChallengesController < ApplicationController
 
     def set_challenge_with_submissions
       @challenge = Challenge.includes(:submissions).find(params[:id])
-      @submissions = @challenge.submissions.order(cached_votes_for: :desc)
+      @submissions = @challenge.submissions.order(cached_votes_total: :desc)
+      # .sort_by(&:cached_votes_total)
+      # order(cached_votes_total: :desc)
     end
 
     # Only allow a trusted parameter "white list" through.

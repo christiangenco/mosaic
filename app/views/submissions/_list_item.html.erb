@@ -66,13 +66,13 @@
       <% end %>
     </div>
 
-    <%= submission.cached_username %>
-    <small>solved <%= time_ago_in_words submission.created_at %> ago</small>
     <% if submission.points %>
       <% label_class = submission.points > 0 ? (submission.points > submission.challenge.points ? 'label-success' : 'label-info') : 'label-default'%>
       <span class="label <%= label_class %>"><%= fa_icon 'star', text: submission.points %></span>
     <% end %>
     <span class="label label-primary"><%= fa_icon 'thumbs-up', text: submission.cached_votes_up %></span>
+    <%= submission.cached_username %>
+    <small>solved <%= time_ago_in_words submission.created_at %> ago</small>
 
   </p>
   <!-- <h4 class="list-group-item-heading">List group item heading</h4> -->
