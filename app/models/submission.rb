@@ -47,11 +47,9 @@ class Submission < ApplicationRecord
   end
 
   def update_user_cached_submission_points
-    highest = Submission.where(challenge_id: challenge_id, user_id: user_id).order(points: :desc).limit(1).pluck(:points).first
-    # user.cached_submission_points[self.id] = points
-    # user.cached_submission_points[1] = 999
-    # user.save
-    # user.update(cached_submission_points: {1 => 2})
-    user.update(cached_submission_points: user.cached_submission_points.merge({challenge_id => highest}))
+    if points_changed? || points_previously_changed?
+      highest = Submission.where(challenge_id: challenge_id, user_id: user_id).order(points: :desc).limit(1).pluck(:points).first
+      user.update(cached_submission_points: user.cached_submission_points.merge({challenge_id => highest}))
+    end
   end
 end
