@@ -12,7 +12,7 @@ one:
 
 two:
   challenge: two
-  user: elisa
+  user: admin
   is_private:
   approved_at: 2016-07-12 21:06:58
   denied_at: 2016-07-12 21:06:58

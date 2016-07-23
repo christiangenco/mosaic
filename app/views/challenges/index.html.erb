@@ -8,6 +8,7 @@
       <a href="<%= challenge_url(challenge) %>" class="list-group-item">
         <!-- <span class="badge">14</span> -->
         <%= strip_order challenge.name %>
+        <%= current_user.cached_submission_points[challenge.id] %>
       </a>
     <% end %>
   </div>

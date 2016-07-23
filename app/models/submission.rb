@@ -4,6 +4,9 @@ class Submission < ApplicationRecord
   acts_as_votable
   serialize :cached_user_ids_liked, Array
   before_create :refresh_cached_username
+  after_commit :update_user_cached_submission_points
+  # after_save :update_user_cached_submission_points
+  # before_save :update_user_cached_submission_points
 
   def public?
     !is_private
@@ -41,5 +44,14 @@ class Submission < ApplicationRecord
   def voted_on_by? voter
     # super(voter)
     cached_user_ids_liked.include?(voter.id)
+  end
+
+  def update_user_cached_submission_points
+    highest = Submission.where(challenge_id: challenge_id, user_id: user_id).order(points: :desc).limit(1).pluck(:points).first
+    # user.cached_submission_points[self.id] = points
+    # user.cached_submission_points[1] = 999
+    # user.save
+    # user.update(cached_submission_points: {1 => 2})
+    user.update(cached_submission_points: user.cached_submission_points.merge({challenge_id => highest}))
   end
 end

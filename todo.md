@@ -4,11 +4,10 @@
 
 # Next
 
-* denormalize username on submission to show "{name} sent {time ago}"
-* user has cumulative points; denormalize for speed (store in a hash in the user; precalculate total)
+* user has cumulative points; denormalize for speed (store in a hash in the user; cache total)
 * user leaderboard
 * /submissions/unread
-* challenges have comments
+* challenge comments/questions - just 2 deep
 * import challenges from Khan Academy
 * import challenges from Codecademy
 * import challenges from notes
@@ -19,7 +18,6 @@
 # Lessons
 
 * italic, underline, link, header, image, hr, br, ul/li, table, div
-*
 
 ---
 
