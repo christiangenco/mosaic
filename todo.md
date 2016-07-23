@@ -4,14 +4,10 @@
 
 # Next
 
-* show: all of your solutions, other solutions that are approved and public
-* solutions have points: 0=no, 1=yes, 1.2=double yes; points=base (from challenge) x points
-* tie ajax buttons to controller actions
-* user can delete their submissions (deleted_at)
-* user can like submissions
 * denormalize username on submission to show "{name} sent {time ago}"
 * user has cumulative points; denormalize for speed (store in a hash in the user; precalculate total)
 * user leaderboard
+* /submissions/unread
 * challenges have comments
 * import challenges from Khan Academy
 * import challenges from Codecademy

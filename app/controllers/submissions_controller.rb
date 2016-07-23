@@ -2,7 +2,7 @@ class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :like, :destroy]
   before_action :set_challenge, only: [:show, :edit, :update, :create]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :ensure_admin!, except: [:index, :show, :new, :create]
+  before_action :ensure_admin!, except: [:index, :show, :new, :create, :update]
 
   # GET /submissions
   def index
@@ -82,6 +82,10 @@ class SubmissionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def submission_params
-      params.require(:submission).permit(:challenge_id, :user_id, :is_private, :approved_at, :denied_at, :url, :content, :points)
+      if current_user.try(:admin?)
+        params.require(:submission).permit(:challenge_id, :user_id, :is_private, :approved_at, :denied_at, :url, :content, :points)
+      else
+        params.require(:submission).permit(:is_private, :url, :content)
+      end
     end
 end

@@ -1,8 +1,6 @@
 <div class="list-group">
   <% submissions.each do |submission| %>
-    <% if submission.public? || submission.viewable_by?(current_user) %>
-      <%= render 'submissions/list_item', submission: submission %>
-    <% end %>
+    <%= render 'submissions/list_item', submission: submission %>
   <% end %>
 </div>
 
@@ -10,6 +8,7 @@
 No solutions yet.
 <% end %>
 
+<!--
 <ul class="list-group">
   <li class="list-group-item">Dapibus ac facilisis in</li>
   <li class="list-group-item disabled">Dapibus ac facilisis in</li>
@@ -18,3 +17,4 @@ No solutions yet.
   <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
   <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
 </ul>
+ -->
