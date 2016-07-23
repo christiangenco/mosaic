@@ -31,4 +31,15 @@ class Submission < ApplicationRecord
   #   puts "liking"
   #   # super(user)
   # end
+
+  def update_cached_votes(vote_scope)
+    self.cached_user_ids_liked = votes_for.pluck(:voter_id)
+    save
+    super(vote_scope)
+  end
+
+  def voted_on_by? voter
+    # super(voter)
+    cached_user_ids_liked.include?(voter.id)
+  end
 end
