@@ -4,15 +4,25 @@
     <div class="pull-right">
       <% if current_user %>
       <!-- @user.voted_up_on? @comment1 -->
-        <% like_button_class = current_user.voted_up_on?(submission) ? 'btn-primary' : '' %>
+        <% like_button_class = current_user.voted_up_on?(submission) ? 'btn-primary' : 'btn-default' %>
         <%= html_button_to fa_icon('thumbs-up', text: 'Like'), like_challenge_submission_path(submission.challenge, submission),
-          class: "btn btn-default btn-sm #{like_button_class}",
+          class: "btn btn-sm #{like_button_class}",
           remote: true
         %>
       <% end %>
 
       <% if admin? || submission.user == current_user %>
-        <%= html_button_to fa_icon('trash', text: ""), "#", class: 'btn btn-danger btn-sm', remote: true %>
+        <% secret_button_class = submission.is_private ? "btn-primary" : "btn-default" %>
+        <%= html_button_to fa_icon('user-secret', text: ""), challenge_submission_path(submission.challenge, submission),
+          class: "btn btn-sm #{secret_button_class}",
+          remote: true,
+          method: :patch,
+          params: {
+            submission: {
+              is_private: !submission.is_private
+            }
+          }
+        %>
       <% end %>
 
       <% if admin? %>

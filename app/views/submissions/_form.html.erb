@@ -5,7 +5,7 @@
     f.url_field :url,
       hide_label: true,
       placeholder: "Solution URL",
-      prepend: f.check_box(:is_private, label: "Private"),
+      prepend: f.check_box(:is_private, label: fa_icon('user-secret', text: "private")),
       append: f.submit("Send", class: 'btn btn-info')
   %>
   <%# f.text_area :content %>

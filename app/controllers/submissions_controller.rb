@@ -40,13 +40,15 @@ class SubmissionsController < ApplicationController
   def update
     if @submission.update(submission_params)
       if request.xhr?
-        render :json => {success: true}
+        # render :json => {success: true}
+        render 'submissions/_list_item', locals: {submission: @submission}, layout: false
       else
         redirect_to @submission, notice: 'Submission was successfully updated.'
       end
     else
       if request.xhr?
-        render :json => @submission.errors, :status => :unprocessable_entity
+        # render :json => @submission.errors, :status => :unprocessable_entity
+        render 'submissions/_list_item', locals: {submission: @submission}, layout: false
       else
         render :edit
       end
