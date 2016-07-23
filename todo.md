@@ -4,12 +4,11 @@
 
 # Next
 
-* /submissions/unread
-* challenge comments/questions - just 2 deep
+* challenge comments/questions (just 2 deep)
 * import challenges from Khan Academy
 * import challenges from Codecademy
-* import challenges from notes
 * import challenges from Mosaic last year
+* import challenges from notes
 * creating a user saves username and real name
 
 # Then
@@ -17,6 +16,12 @@
 * user leaderboard
 * I can give users emoji badges
 * users can create challenges for themselves; private for them unless I make them public
+
+# Nitpicky
+
+* cmd+S to save
+* hashes in URL on /challenge/:id to stay on current tab on refresh
+* show intermediate state for nil submission on /submissions
 
 ---
 
