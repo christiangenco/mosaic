@@ -16,7 +16,7 @@
         %>
       <% end %>
 
-      <% if admin? || submission.user == current_user %>
+      <% if admin? || submission.user_id == current_user.try(:id) %>
         <% secret_button_class = submission.is_private ? "btn-primary" : "btn-default" %>
         <%= html_button_to fa_icon('user-secret', text: ""), challenge_submission_path(submission.challenge, submission),
           class: "btn btn-sm #{secret_button_class}",
@@ -66,13 +66,13 @@
       <% end %>
     </div>
 
-    <%= submission.user.display_name %>
+    <%= submission.cached_username %>
     <small>solved <%= time_ago_in_words submission.created_at %> ago</small>
     <% if submission.points %>
       <% label_class = submission.points > 0 ? (submission.points > submission.challenge.points ? 'label-success' : 'label-info') : 'label-default'%>
       <span class="label <%= label_class %>"><%= fa_icon 'star', text: submission.points %></span>
     <% end %>
-    <span class="label label-primary"><%= fa_icon 'thumbs-up', text: submission.votes_for.size %></span>
+    <span class="label label-primary"><%= fa_icon 'thumbs-up', text: submission.cached_votes_up %></span>
 
   </p>
   <!-- <h4 class="list-group-item-heading">List group item heading</h4> -->

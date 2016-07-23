@@ -1,7 +1,8 @@
 class Submission < ApplicationRecord
-  belongs_to :challenge
+  belongs_to :challenge, counter_cache: true
   belongs_to :user
   acts_as_votable
+  before_create :refresh_cached_username
 
   def public?
     !is_private
@@ -9,5 +10,14 @@ class Submission < ApplicationRecord
 
   def viewable_by?(user)
     public? || user.try(:admin?) || user_id == user.try(:id)
+  end
+
+  def refresh_cached_username
+    self.cached_username = user.try(:display_name)
+  end
+
+  def update_cached_username
+    refresh_cached_username
+    save
   end
 end

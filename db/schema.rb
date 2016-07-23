@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723000141) do
+ActiveRecord::Schema.define(version: 20160723012419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,12 @@ ActiveRecord::Schema.define(version: 20160723000141) do
     t.text     "description"
     t.string   "name"
     t.boolean  "is_locked"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.text     "tags"
     t.string   "category"
     t.integer  "points"
+    t.integer  "submissions_count"
   end
 
   create_table "submissions", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160723000141) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.string   "cached_username"
     t.index ["cached_votes_down"], name: "index_submissions_on_cached_votes_down", using: :btree
     t.index ["cached_votes_score"], name: "index_submissions_on_cached_votes_score", using: :btree
     t.index ["cached_votes_total"], name: "index_submissions_on_cached_votes_total", using: :btree
