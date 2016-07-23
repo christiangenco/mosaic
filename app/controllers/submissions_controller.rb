@@ -1,12 +1,12 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :like, :destroy]
   before_action :set_challenge, only: [:show, :edit, :update, :create]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :ensure_admin!, except: [:index, :show, :new, :create, :update]
+  before_action :authenticate_user!, except: [:show]
+  before_action :ensure_admin!, except: [:show, :new, :create, :update]
 
   # GET /submissions
   def index
-    @submissions = Submission.all
+    @submissions = Submission.includes(:challenge).where(points: nil).group_by(&:challenge_id)
   end
 
   # GET /submissions/1

@@ -15,7 +15,8 @@ Rails.application.routes.draw do
         post :like
       end
     end
-
   end
+
+  get '/submissions', to: "submissions#index"
   root to: "challenges#index"
 end
