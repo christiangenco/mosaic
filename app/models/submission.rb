@@ -1,6 +1,7 @@
 class Submission < ApplicationRecord
   belongs_to :challenge
   belongs_to :user
+  acts_as_votable
 
   def public?
     !is_private

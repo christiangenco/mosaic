@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :challenges do
     resources :submissions do
       member do
+        post :like
       end
     end
 

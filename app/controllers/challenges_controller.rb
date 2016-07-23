@@ -59,7 +59,7 @@ class ChallengesController < ApplicationController
 
     def set_challenge_with_submissions
       @challenge = Challenge.includes(:submissions).find(params[:id])
-      @submissions = @challenge.submissions
+      @submissions = @challenge.submissions.order(cached_weighted_average: :desc)
     end
 
     # Only allow a trusted parameter "white list" through.

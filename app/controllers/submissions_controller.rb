@@ -1,5 +1,5 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: [:show, :edit, :update, :like, :destroy]
   before_action :set_challenge, only: [:show, :edit, :update, :create]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :ensure_admin!, except: [:index, :show, :new, :create]
@@ -51,6 +51,15 @@ class SubmissionsController < ApplicationController
         render :edit
       end
     end
+  end
+
+  def like
+    if current_user.voted_up_on?(@submission)
+      @submission.unliked_by(current_user)
+    else
+      current_user.likes(@submission)
+    end
+    render 'submissions/_list_item', locals: {submission: @submission}, layout: false
   end
 
   # DELETE /submissions/1

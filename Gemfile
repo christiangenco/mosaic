@@ -22,6 +22,7 @@ gem 'turbolinks', '~> 5'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on'
 gem 'devise'
 
