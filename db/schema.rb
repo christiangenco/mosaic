@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723012419) do
+ActiveRecord::Schema.define(version: 20160723015126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160723012419) do
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
     t.string   "cached_username"
+    t.text     "cached_user_ids_liked"
     t.index ["cached_votes_down"], name: "index_submissions_on_cached_votes_down", using: :btree
     t.index ["cached_votes_score"], name: "index_submissions_on_cached_votes_score", using: :btree
     t.index ["cached_votes_total"], name: "index_submissions_on_cached_votes_total", using: :btree

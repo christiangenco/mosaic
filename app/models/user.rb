@@ -13,4 +13,12 @@ class User < ApplicationRecord
   def display_name
     username || name || email
   end
+
+  def voted_up_on?(item)
+    if item.respond_to?(:cached_user_ids_liked)
+      item.cached_user_ids_liked.include?(self.id)
+    else
+      super(item)
+    end
+  end
 end

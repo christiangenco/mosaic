@@ -3,9 +3,9 @@
 one:
   description: MyText
   name: MyString
-  is_locked: 
+  is_locked:
 
 two:
   description: MyText
   name: MyString
-  is_locked: 
+  is_locked:

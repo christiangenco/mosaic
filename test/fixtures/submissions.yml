@@ -2,8 +2,8 @@
 
 one:
   challenge: one
-  user: one
-  is_private: 
+  user: admin
+  is_private:
   approved_at: 2016-07-12 21:06:58
   denied_at: 2016-07-12 21:06:58
   url: MyString
@@ -12,8 +12,8 @@ one:
 
 two:
   challenge: two
-  user: two
-  is_private: 
+  user: elisa
+  is_private:
   approved_at: 2016-07-12 21:06:58
   denied_at: 2016-07-12 21:06:58
   url: MyString

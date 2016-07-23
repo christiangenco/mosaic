@@ -2,6 +2,7 @@ class Submission < ApplicationRecord
   belongs_to :challenge, counter_cache: true
   belongs_to :user
   acts_as_votable
+  serialize :cached_user_ids_liked, Array
   before_create :refresh_cached_username
 
   def public?
@@ -20,4 +21,14 @@ class Submission < ApplicationRecord
     refresh_cached_username
     save
   end
+
+  # def unliked_by(user)
+  #   puts "unliking"
+  #   # super(user)
+  # end
+
+  # def liked_by(user)
+  #   puts "liking"
+  #   # super(user)
+  # end
 end

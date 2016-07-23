@@ -4,4 +4,7 @@ class SubmissionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+  test "user ids are cached in submissions" do
+    assert false
+  end
 end
