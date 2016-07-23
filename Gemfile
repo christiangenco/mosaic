@@ -54,6 +54,10 @@ group :development do
   gem 'rails_apps_pages'
   gem 'rails_layout'
   gem 'dotenv-rails'
+
+  # testing
+  gem 'guard'
+  gem 'guard-minitest'
 end
 
 group :production do

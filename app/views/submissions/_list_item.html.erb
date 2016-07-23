@@ -1,5 +1,7 @@
 <% item_class = submission.viewable_by?(current_user) ? "" : "disabled" %>
-<% item_class += submission.user_id == current_user.try(:id) ? "list-group-item-success" : "" %>
+<%
+  item_class += submission.user_id == current_user.try(:id) ? list_group_class_for_score(1.0 * submission.points / submission.challenge.points) : ""
+%>
 <% submission_url = submission.viewable_by?(current_user) ? submission.url : "#nice_try" %>
 <% submission_tag = submission.viewable_by?(current_user) ? 'a' : "span" %>
 

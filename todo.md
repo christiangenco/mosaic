@@ -4,14 +4,14 @@
 
 # Next
 
-* user has cumulative points; denormalize for speed (store in a hash in the user; cache total)
 * user leaderboard
 * /submissions/unread
 * challenge comments/questions - just 2 deep
 * import challenges from Khan Academy
 * import challenges from Codecademy
 * import challenges from notes
-* creating a user saves username
+* import challenges from Mosaic last year
+* creating a user saves username and real name
 
 ---
 

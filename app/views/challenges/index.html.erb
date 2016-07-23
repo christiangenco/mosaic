@@ -4,11 +4,18 @@
   <h2><a name="<%= category %>"></a><%= strip_order category %></h2>
   <div class="list-group">
     <% challenges.sort_by{|c| c.try(:name).try(:to_f)}.each do |challenge| %>
-      <!-- classes: disabled list-group-item-success list-group-item-info list-group-item-warning list-group-item-danger -->
-      <a href="<%= challenge_url(challenge) %>" class="list-group-item">
+      <% points = current_user.cached_submission_points[challenge.id] %>
+      <% list_item_class = points ? list_group_class_for_score(1.0 * points / challenge.points) : '' %>
+      <a href="<%= challenge_url(challenge) %>" class="list-group-item <%= list_item_class %>">
         <!-- <span class="badge">14</span> -->
         <%= strip_order challenge.name %>
-        <%= current_user.cached_submission_points[challenge.id] %>
+        <%= points %>
+        <% if points %>
+          <span class="pull-right">
+            <% label_class = points > 0 ? (points > challenge.points ? 'label-success' : 'label-info') : 'label-default'%>
+            <span class="label <%= label_class %>"><%= fa_icon 'star', text: points %></span>
+          </span>
+        <% end %>
       </a>
     <% end %>
   </div>
