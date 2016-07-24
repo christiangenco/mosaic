@@ -15,6 +15,7 @@ class ChallengesController < ApplicationController
   def show
     # # @challenge.includes(:submissions)
     # @submissions = @challenge.submissions
+    @comments = Comment.where(commentable_id: @challenge.id).group_by(&:parent_id)
   end
 
   # GET /challenges/new

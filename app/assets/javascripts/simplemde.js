@@ -1,5 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
   $("textarea[markdown]").each(function(i, e){
+    var hide_markdown_toobar = !!e.getAttribute("hide_markdown_toobar");
+
     var simplemde = new SimpleMDE({
       element: e,
       autofocus: false,
@@ -20,7 +22,8 @@ document.addEventListener("turbolinks:load", function() {
       spellChecker: true,
       // status: [],
       tabSize: 2,
-      // toolbar: [],
+      status: hide_markdown_toobar ? false : ["autosave", "lines", "words", "cursor"],
+      toolbar: hide_markdown_toobar ? false : ["bold","italic","heading","|","quote","code","unordered-list","ordered-list","|","link","image","|","preview","side-by-side","fullscreen","|","guide"]
      });
     // console.dir(e);
 

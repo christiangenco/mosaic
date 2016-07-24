@@ -9,7 +9,6 @@
       <a href="<%= challenge_url(challenge) %>" class="list-group-item <%= list_item_class %>">
         <!-- <span class="badge">14</span> -->
         <%= strip_order challenge.name %>
-        <%= points %>
         <% if points %>
           <span class="pull-right">
             <% label_class = points > 0 ? (points > challenge.points ? 'label-success' : 'label-info') : 'label-default'%>

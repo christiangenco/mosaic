@@ -11,16 +11,6 @@
   <%= strip_order @challenge.name %>
 </h1>
 
-<br>
-
-<%=
-  render 'submissions/form',
-  challenge: @challenge,
-  submission: Submission.new
-%>
-
-<!-- <hr> -->
-
 <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -47,10 +37,23 @@
       <div class="row">
         <div class="challenge-description col-md-8">
           <%= markdown(@challenge.description).html_safe %>
+
+          <%=
+            render 'submissions/form',
+            challenge: @challenge,
+            submission: Submission.new
+          %>
         </div>
       </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="questions">questions</div>
+    <div role="tabpanel" class="tab-pane" id="questions">
+      <div class="row">
+        <div class="col-md-8">
+          <%= render 'comments/list', comments: @comments %>
+          <!-- {nil => [{id: 1}], 1 => [{id: 2}, {id: 3}]} -->
+        </div>
+      </div>
+    </div>
     <div role="tabpanel" class="tab-pane" id="solutions">
       <div class="row">
         <div class="col-md-8">

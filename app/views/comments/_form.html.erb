@@ -1,0 +1,23 @@
+<!-- layout: :inline -->
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="http://www.gravatar.com/avatar/bfed2f6a921d93feb957ebf05f8ca7fb?s=128" alt="..." style="width: 64px; height: 64px;" />
+    </a>
+  </div>
+  <div class="media-body">
+    <%= bootstrap_form_for(comment) do |f| %>
+      <%= f.alert_message "Please fix the errors below." %>
+
+      <%= f.text_area :body, markdown: true, hide_markdown_toobar: true, hide_label: true %>
+
+      <%= f.hidden_field :commentable_id, value: commentable_id %>
+      <%= f.hidden_field :parent_id, value: parent_id %>
+
+      <div class="pull-right">
+        <%= f.submit "Comment", class: "btn btn-success" %>
+      </div>
+      <div class="clearfix"></div>
+    <% end %>
+  </div>
+</div>

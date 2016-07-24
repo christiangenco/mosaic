@@ -1,0 +1,9 @@
+<% parent_id ||= nil %>
+
+<% comments[parent_id].each do |comment| %>
+  <%= render 'comments/list_item', comment: comment, comments: comments %>
+<% end if comments[parent_id] %>
+
+<% if parent_id == nil %>
+  <%= render 'comments/form', comment: Comment.new, commentable_id: nil, parent_id: nil %>
+<% end %>
