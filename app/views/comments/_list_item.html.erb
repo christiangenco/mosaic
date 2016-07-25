@@ -1,8 +1,12 @@
+<% comments ||= [] %>
+
 <ul class="media-list">
   <li class="media">
     <div class="media-left"> <a href="#"> <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="http://www.gravatar.com/avatar/bfed2f6a921d93feb957ebf05f8ca7fb?s=128" data-holder-rendered="true" style="width: 64px; height: 64px;"> </a> </div>
     <div class="media-body">
-      <h5 class="media-heading">Christian Genco <small>• <%= time_ago_in_words comment.updated_at %> ago</small></h5>
+      <h5 class="media-heading">
+        Christian Genco <small>• <%= time_ago_in_words comment.updated_at %> ago</small>
+      </h5>
       <%= markdown(comment.body).html_safe %>
       <div style="margin-top: -10px; margin-bottom: 10px">
         <a href="#">Like</a> <small>•</small>
@@ -13,7 +17,7 @@
         </span>
       </div>
 
-      <%= render 'comments/list', comments: comments, parent_id: comment.try(:id) || comment[:id] %>
+      <%= render 'comments/list', comments: comments, parent_id: comment.id %>
 
     </div>
   </li>

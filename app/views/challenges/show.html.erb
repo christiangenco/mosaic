@@ -49,8 +49,7 @@
     <div role="tabpanel" class="tab-pane" id="questions">
       <div class="row">
         <div class="col-md-8">
-          <%= render 'comments/list', comments: @comments %>
-          <!-- {nil => [{id: 1}], 1 => [{id: 2}, {id: 3}]} -->
+          <%= render 'comments/list', comments: @comments, commentable_id: @challenge.id, commentable_type: @challenge.class %>
         </div>
       </div>
     </div>

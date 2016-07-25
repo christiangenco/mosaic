@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :ensure_admin!, except: [:index, :show, :new, :create, :update]
 
   # GET /comments
   def index
@@ -22,11 +24,21 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = Comment.new(comment_params)
+    @comment.user = current_user
 
     if @comment.save
-      redirect_to @comment, notice: 'Comment was successfully created.'
+      if request.xhr?
+        # render :json => {success: true}
+        render partial: 'comments/list_item', locals: {comment: @comment}
+      else
+        redirect_to @comment.commentable, notice: 'Comment saved'
+      end
     else
-      render :new
+      if request.xhr?
+        render partial: 'comments/form', locals: {comment: @comment}
+      else
+        redirect_to @comment.commentable, notice: 'Error saving comment'
+      end
     end
   end
 
@@ -53,6 +65,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:body, :user_id, :commentable_id, :parrent_id)
+      params.require(:comment).permit(:body, :user_id, :commentable_id, :commentable_type, :parent_id)
     end
 end

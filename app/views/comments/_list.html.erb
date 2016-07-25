@@ -1,9 +1,11 @@
 <% parent_id ||= nil %>
 
-<% comments[parent_id].each do |comment| %>
-  <%= render 'comments/list_item', comment: comment, comments: comments %>
-<% end if comments[parent_id] %>
+<div class="comments">
+  <% comments[parent_id].each do |comment| %>
+    <%= render 'comments/list_item', comment: comment, comments: comments %>
+  <% end if comments[parent_id] %>
 
-<% if parent_id == nil %>
-  <%= render 'comments/form', comment: Comment.new, commentable_id: nil, parent_id: nil %>
-<% end %>
+  <% if parent_id == nil %>
+    <%= render 'comments/form', comment: Comment.new(commentable_id: commentable_id, commentable_type: commentable_type, parent_id: parent_id) %>
+  <% end %>
+</div>
