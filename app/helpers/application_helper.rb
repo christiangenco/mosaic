@@ -26,4 +26,18 @@ module ApplicationHelper
       html
     end
   end
+
+  # see also: gravatar_profile_image_tag from cloudinary?
+  def gravitar_image_tag(email, options={})
+    options = options.symbolize_keys
+
+    md5 = Digest::MD5.hexdigest(email)
+
+    options[:width], options[:height] = extract_dimensions(options.delete(:size)) if options[:size]
+    s = (options[:width] || options[:height] || 0) + (options[:height] || options[:width] || 0)
+
+    options[:src] = "http://www.gravatar.com/avatar/#{md5}?s=#{s}"
+
+    tag("img", options)
+  end
 end

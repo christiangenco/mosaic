@@ -4,12 +4,10 @@
 
 # Next
 
-* challenge comments/questions (just 2 deep)
 * import challenges from Khan Academy
 * import challenges from Codecademy
 * import challenges from Mosaic last year
 * import challenges from notes
-* creating a user saves username and real name
 
 # Then
 

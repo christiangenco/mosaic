@@ -4,7 +4,7 @@
   <h2><a name="<%= category %>"></a><%= strip_order category %></h2>
   <div class="list-group">
     <% challenges.sort_by{|c| c.try(:name).try(:to_f)}.each do |challenge| %>
-      <% points = current_user.cached_submission_points[challenge.id] %>
+      <% points = current_user ? current_user.cached_submission_points[challenge.id] : nil %>
       <% list_item_class = points ? list_group_class_for_score(1.0 * points / challenge.points) : '' %>
       <a href="<%= challenge_url(challenge) %>" class="list-group-item <%= list_item_class %>">
         <!-- <span class="badge">14</span> -->

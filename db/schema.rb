@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724012817) do
+ActiveRecord::Schema.define(version: 20160725005822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(version: 20160724012817) do
     t.integer  "user_id"
     t.string   "commentable_type"
     t.integer  "commentable_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "parent_id"
+    t.string   "cached_user_name"
+    t.string   "cached_user_email"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
     t.index ["parent_id"], name: "index_comments_on_parent_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
