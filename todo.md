@@ -4,14 +4,13 @@
 
 # Next
 
-* import challenges from Khan Academy
-* import challenges from Codecademy
-* import challenges from Mosaic last year
-* import challenges from notes
+* CSS and Javascript lessons
+* comments on submissions
+* assign custom points? one more button with check ++ that's 10x?
+* import challenges from Khan Academy, Codecademy, Mosaic last year, notes
 
 # Then
 
-* user leaderboard
 * I can give users emoji badges
 * users can create challenges for themselves; private for them unless I make them public
 

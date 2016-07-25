@@ -1,4 +1,6 @@
 <% parent_id ||= nil %>
+<% commentable_id ||= nil %>
+<% commentable_type ||= nil %>
 
 <div class="comments">
   <% comments[parent_id].each do |comment| %>

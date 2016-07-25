@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.all
+    @comments = Comment.all.group_by(&:parent_id)
   end
 
   # GET /comments/1
