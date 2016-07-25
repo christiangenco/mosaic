@@ -18,7 +18,11 @@ class User < ApplicationRecord
 
   def update_cached_points
     if cached_submission_points_changed?
-      self.cached_points = cached_submission_points.values.inject(&:+)
+      self.cached_points = cached_submission_points.values.compact.inject(&:+)
     end
+  end
+
+  def update_cached_submission_points!
+    update(cached_submission_points: Hash[submissions.order(points: :asc).pluck(:challenge_id, :points)])
   end
 end
