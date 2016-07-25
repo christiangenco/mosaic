@@ -4,10 +4,8 @@ one:
   body: MyText
   user: one
   commentable: one
-  parrent_id: 1
 
 two:
   body: MyText
   user: two
   commentable: two
-  parrent_id: 1
