@@ -1,0 +1,16 @@
+<div class="list-group">
+  <% users.each_with_index do |user, i| %>
+    <% if i < 5 || user == current_user %>
+      <div class="list-group-item">
+        <p class="list-group-item-text">
+          <%= user.display_name %>
+          <span class="pull-right">
+            <% label_class = i < 3 ? 'label-success' : 'label-info' %>
+            <span class="label <%= label_class %>"><%= fa_icon 'star', text: user.cached_points %></span>
+          </span>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users
+
   get '/submissions', to: "submissions#index"
   root to: "challenges#index"
 end
