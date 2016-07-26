@@ -5,7 +5,25 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.all.group_by(&:parent_id)
+    @comments = Comment.order(created_at: :asc)
+
+    commentable_id   = params["commentable_id"].try(:to_i)
+    commentable_type = params["commentable_type"]
+    if commentable_id && commentable_type
+      @comments = @comments.where(commentable_id: commentable_id, commentable_type: commentable_type)
+    end
+
+    @comments = @comments.group_by(&:parent_id)
+
+    if params[:hideLayout]
+      render partial: 'comments/list', locals: {
+        comments: @comments,
+        commentable_id: commentable_id,
+        commentable_type: commentable_type,
+      }, layout: 'layouts/hide_layout'
+    else
+      render 'comments/index'
+    end
   end
 
   # GET /comments/1

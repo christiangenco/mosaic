@@ -3,14 +3,12 @@
   <head>
     <%= render 'layouts/head' %>
   </head>
-
   <body>
-    <%= render 'navbar/navbar' %>
     <%= bootstrap_flash %>
-    <div class="container">
+    <div class="container-fluid">
       <%= yield %>
     </div>
     <br><br>
-    <%= render 'layouts/modal' %>
+    <%# render 'layouts/modal' %>
   </body>
 </html>
