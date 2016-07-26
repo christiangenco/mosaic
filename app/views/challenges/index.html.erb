@@ -7,7 +7,7 @@
       <% points = current_user ? current_user.cached_submission_points[challenge.id] : nil %>
       <% list_item_class = points ? list_group_class_for_score(1.0 * points / challenge.points) : '' %>
       <% list_item_class += " disabled" if challenge.is_locked %>
-      <% challenge_tag = challenge.is_locked ? 'div' : 'a' %>
+      <% challenge_tag = (challenge.is_locked && !admin?) ? 'div' : 'a' %>
 
       <<%= challenge_tag %> href="<%= challenge_url(challenge) %>" class="list-group-item <%= list_item_class %>">
         <!-- <span class="badge">14</span> -->
