@@ -61,7 +61,8 @@ class ChallengesController < ApplicationController
 
     def set_challenge_with_submissions
       @challenge = Challenge.includes(:submissions).find(params[:id])
-      @submissions = @challenge.submissions.order(cached_votes_total: :desc)
+      # @submissions = @challenge.submissions.order(cached_votes_total: :desc)
+      @submissions = @challenge.submissions.order(points: :desc)
       # .sort_by(&:cached_votes_total)
       # order(cached_votes_total: :desc)
     end
