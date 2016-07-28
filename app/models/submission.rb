@@ -1,6 +1,7 @@
 class Submission < ApplicationRecord
   belongs_to :challenge, counter_cache: true
   belongs_to :user
+  has_many :comments, as: :commentable, dependent: :destroy
   acts_as_votable
   serialize :cached_user_ids_liked, Array
   before_create :refresh_cached_username

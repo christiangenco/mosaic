@@ -16,6 +16,12 @@
           class: "btn btn-sm #{like_button_class}",
           remote: true
         %>
+
+        <%= html_button_to fa_icon('comment', text: submission.comments_count),
+          comments_path(commentable_id: submission.id, commentable_type: 'Submission', hideLayout: true),
+          data: {modal: true, title: "Comments"},
+          class: 'btn btn-default btn-sm'
+        %>
       <% end %>
 
       <% if admin? || submission.user_id == current_user.try(:id) %>
@@ -33,11 +39,6 @@
       <% end %>
 
       <% if admin? %>
-        <%= html_button_to fa_icon('comment'),
-          comments_path(commentable_id: submission.id, commentable_type: 'Submission', hideLayout: true),
-          data: {modal: true, title: "Comments"},
-          class: 'btn btn-default btn-sm'
-        %>
         <%= html_button_to fa_icon('times'), challenge_submission_path(submission.challenge, submission),
           class: 'btn btn-default btn-sm',
           remote: true,
