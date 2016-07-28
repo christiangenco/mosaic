@@ -15,6 +15,10 @@
         <%= strip_order challenge.name %>
 
         <span class="pull-right">
+          <% if admin? %>
+            <span class="label label-default"><%= fa_icon 'trophy', text: challenge.submissions_count %></span>
+          <% end %>
+
           <% label_class = (points && points > 0) ? (points > challenge.points ? 'label-success' : 'label-info') : 'label-default'%>
           <% points_text = challenge.points.to_s %>
           <% points_text = ("#{points}/#{challenge.points}") if points %>
