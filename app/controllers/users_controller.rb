@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.order(cached_points: :desc)
+    # @users = @users.sort_by{|u|
+    #   [4,6].index(u.id) ? u.cached_points / 2.0 : u.cached_points
+    # }.reverse
+
     render 'users/index', locals: {users: @users}
   end
 

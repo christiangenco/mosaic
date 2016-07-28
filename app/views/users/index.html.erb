@@ -1,16 +1,14 @@
-<div class="list-group">
-  <% users.each_with_index do |user, i| %>
-    <% if i < 5 || user == current_user %>
-      <div class="list-group-item">
-        <p class="list-group-item-text">
-          <%= user.display_name %>
-          <span class="pull-right">
-            <% label_class = i < 3 ? 'label-success' : 'label-info' %>
-            <span class="label <%= label_class %>"><%= fa_icon 'star', text: user.cached_points %></span>
-          </span>
-        </p>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+<% classes = {
+  "9-10:30":  [8, 5, 7, 4, 6],
+  "10:30-12": [11, 9, 10, 12, 4, 6],
+  # "both": [4, 6]
+}
+%>
+
+<% classes.each do |name, ids| %>
+  <% students = users.select{|u| ids.index(u.id)}.sort_by(&:cached_points).reverse %>
+  <% total = students.inject(0){|total, u| total+u.cached_points} %>
+  <h2><%= name %>: <b><%= (total * 10.0/students.length).round %></b></h2>
+  <%= render 'users/list', users: students %>
+<% end %>
 
