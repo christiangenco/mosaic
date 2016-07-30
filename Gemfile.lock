@@ -191,6 +191,7 @@ GEM
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redcarpet (3.3.4)
+    redis (3.3.1)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
     rest-client (2.0.0)
@@ -277,6 +278,7 @@ DEPENDENCIES
   rails_apps_pages
   rails_layout
   redcarpet
+  redis
   rubocop
   sass-rails (~> 5.0)
   spring

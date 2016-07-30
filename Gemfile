@@ -27,6 +27,7 @@ gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-
 gem 'devise'
 
 gem 'pg'
+gem 'redis'
 # gem 'sendgrid'
 
 # https://github.com/mbleigh/acts-as-taggable-on
