@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :submissions
   serialize :cached_submission_points, Hash
+  serialize :purchases, Hash
   acts_as_voter
   before_save :update_cached_points
 
@@ -17,8 +18,9 @@ class User < ApplicationRecord
   end
 
   def update_cached_points
-    if cached_submission_points_changed?
-      self.cached_points = cached_submission_points.values.compact.inject(&:+)
+    if cached_submission_points_changed? || purchases_changed?
+      spent = purchases.values.compact.inject(&:+) || 0
+      self.cached_points = cached_submission_points.values.compact.inject(&:+) - spent
     end
   end
 
