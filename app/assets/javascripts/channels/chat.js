@@ -2,7 +2,6 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
   connected: function() {
     console.info("ChatChannel#connected");
     // Called when the subscription is ready for use on the server
-    App.chat.send({ sent_by: "Paul", body: "This is a cool chat app." })
   },
 
   disconnected: function() {
@@ -21,3 +20,5 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
     return this.perform('speak');
   }
 });
+
+// App.chat.send({ sent_by: "Paul", body: "This is a cool chat app." })

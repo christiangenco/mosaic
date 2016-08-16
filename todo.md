@@ -4,6 +4,8 @@
 
 # Next
 
+* make public
+* invite Ricky
 * CSS and Javascript lessons
 * comments on submissions
 * assign custom points? one more button with check ++ that's 10x?

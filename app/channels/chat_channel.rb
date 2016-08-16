@@ -11,8 +11,6 @@ class ChatChannel < ApplicationCable::Channel
   def receive(data)
     print "ChatChannel#receive "
     p data
-
-    ChatChannel.broadcast_to("some_channel", {foo: "bar"})
   end
 
   def unsubscribed
