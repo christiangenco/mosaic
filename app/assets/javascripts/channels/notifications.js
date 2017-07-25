@@ -16,7 +16,7 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
     if(window.qs && window.qs.hideLayout) return;
 
     window.toastr[data.type || "info"](data.body || "", data.title || "Notification", {
-      onclick: () => {
+      onclick: function() {
         if(data.path){
           window.Turbolinks.visit(data.path)
         }
