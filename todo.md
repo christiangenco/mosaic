@@ -4,15 +4,13 @@
 
 # Next
 
-* make public
-* invite Ricky
 * CSS and Javascript lessons
-* comments on submissions
-* assign custom points? one more button with check ++ that's 10x?
-* import challenges from Khan Academy, Codecademy, Mosaic last year, notes
 
 # Then
 
+* notifications (web sockets?)
+* invite Ricky
+* import challenges from Khan Academy, Codecademy, Mosaic last year, notes
 * I can give users emoji badges
 * users can create challenges for themselves; private for them unless I make them public
 
@@ -24,17 +22,9 @@
 
 ---
 
-# Lessons
-
-* italic, underline, link, header, image, hr, br, ul/li, table, div
-
----
-
 # Inbox
 
 * way to submit surveys?
 * users can set their own XP goals? for the class? for the day?
 * users can privately message me saying someone else deserves a badge, like helping
-* notifications (web sockets?)
-* submissions have comments (pop up in model)
 * send score updates through websockets
