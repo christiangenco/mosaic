@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
         commentable_type: commentable_type,
       }, layout: 'layouts/hide_layout'
     else
+      @submission = Submission.find(commentable_id) if commentable_type.downcase == "submission"
       render 'comments/index'
     end
   end

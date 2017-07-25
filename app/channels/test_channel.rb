@@ -35,7 +35,6 @@ end
 #   body: 'This is a cool chat app.'
 # )
 
-
 # WebNotificationsChannel.broadcast_to(
 #   current_user,
 #   title: 'New things!',

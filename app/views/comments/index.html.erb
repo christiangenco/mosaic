@@ -1,1 +1,6 @@
+<% if @submission %>
+  <%= render 'submissions/list_item', submission: @submission %>
+  <br />
+<% end %>
+
 <%= render 'comments/list', comments: @comments %>

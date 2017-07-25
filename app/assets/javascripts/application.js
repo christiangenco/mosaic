@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require simplemde.min
 //= require highlight.min
+//= require toastr.min
 //= require_tree .

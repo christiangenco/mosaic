@@ -2,6 +2,10 @@
 class NotificationsChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
+    # stream_for post
+    # puts "current user:"
+    # p current_user
+    stream_for current_user
   end
 
   def unsubscribed
@@ -11,3 +15,5 @@ class NotificationsChannel < ApplicationCable::Channel
   def notify
   end
 end
+
+# NotificationsChannel.broadcast_to(user, {foo: 1})
