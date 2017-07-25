@@ -42,13 +42,6 @@ class SubmissionsController < ApplicationController
       if request.xhr?
         # render :json => {success: true}
 
-        NotificationsChannel.broadcast_to(@submission.user, {
-          title: "#{@submission.challenge.title} Graded",
-          body: "You got #{@submission.points} points.",
-          path: challenge_submission_path(@submission.challenge_id, @submission),
-          type: @submission.points && @submission.points > 0 ? "info" : "warning"
-        })
-
         render 'submissions/_list_item', locals: {submission: @submission}, layout: false
       else
         redirect_to @submission, notice: 'Submission was successfully updated.'

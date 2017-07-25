@@ -8,6 +8,7 @@ class Submission < ApplicationRecord
   after_commit :update_user_cached_submission_points
   # after_save :update_user_cached_submission_points
   # before_save :update_user_cached_submission_points
+  after_update :send_notification
 
   def public?
     !is_private
@@ -53,5 +54,16 @@ class Submission < ApplicationRecord
       highest = Submission.where(challenge_id: challenge_id, user_id: user_id).order(points: :desc).limit(1).pluck(:points).first
       user.update(cached_submission_points: user.cached_submission_points.merge({challenge_id => highest}))
     end
+  end
+
+  private
+
+  def send_notification
+    NotificationsChannel.broadcast_to(user, {
+      title: "#{challenge.title} Graded",
+      body: "You got #{points}/#{challenge.points} points.",
+      path: Rails.application.routes.url_helpers.challenge_submission_path(challenge, self),
+      type: points && points > 0 ? (points > challenge.points ? "success" : "info") : "warning"
+    })
   end
 end

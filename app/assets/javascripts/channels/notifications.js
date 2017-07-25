@@ -31,4 +31,5 @@ window.toastr.options = {
   closeButton: true,
   timeOut: 60000,
   extendedTimeOut: 10000,
+  hideDuration: 300,
 }
