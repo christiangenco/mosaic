@@ -11,13 +11,13 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
     console.info("notifications:received");
-    console.dir(data);
-    console.log(data.title)
-    window.toastr["info"](data.message || "", data.title || "Notification", {onclick: () => {
-      if(data.path){
-        window.Turbolinks.visit(data.path)
+    window.toastr[data.type || "info"](data.body || "", data.title || "Notification", {
+      onclick: () => {
+        if(data.path){
+          window.Turbolinks.visit(data.path)
+        }
       }
-    }})
+    })
   },
 
   notify: function() {
@@ -25,7 +25,10 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
   }
 });
 
-toastr.options = {
+window.toastr.options = {
   progressBar: true,
   hideMethod: "slideUp",
+  closeButton: true,
+  timeOut: 60000,
+  extendedTimeOut: 10000,
 }

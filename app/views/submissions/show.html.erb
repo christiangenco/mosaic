@@ -1,44 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1><%= link_to "#{@challenge.name}", @challenge %></h1>
 
-<p>
-  <strong>Challenge:</strong>
-  <%= @submission.challenge %>
-</p>
+<%= render 'submissions/list_item', submission: @submission %>
+<br />
 
-<p>
-  <strong>User:</strong>
-  <%= @submission.user %>
-</p>
-
-<p>
-  <strong>Is private:</strong>
-  <%= @submission.is_private %>
-</p>
-
-<p>
-  <strong>Approved at:</strong>
-  <%= @submission.approved_at %>
-</p>
-
-<p>
-  <strong>Denied at:</strong>
-  <%= @submission.denied_at %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @submission.url %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @submission.content %>
-</p>
-
-<p>
-  <strong>Points:</strong>
-  <%= @submission.points %>
-</p>
-
-<%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+<%= render 'comments/list', comments: @submission.comments, commentable_id: @submission.id, commentable_type: @submission.class %>
