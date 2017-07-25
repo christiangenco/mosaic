@@ -2,10 +2,12 @@
 <% commentable_id ||= nil %>
 <% commentable_type ||= nil %>
 
+<% comments = comments.group_by(&:parent_id) unless comments.class == Hash %>
+
 <div class="comments">
   <% comments[parent_id].each do |comment| %>
     <%= render 'comments/list_item', comment: comment, comments: comments %>
-  <% end if parent_id && comments[parent_id] %>
+  <% end if comments[parent_id] %>
 
   <% if parent_id == nil %>
     <%= render 'comments/form', comment: Comment.new(commentable_id: commentable_id, commentable_type: commentable_type, parent_id: parent_id) %>

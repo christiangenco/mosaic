@@ -11,6 +11,10 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
     console.info("notifications:received");
+
+    // don't show notifications in modal views
+    if(window.qs && window.qs.hideLayout) return;
+
     window.toastr[data.type || "info"](data.body || "", data.title || "Notification", {
       onclick: () => {
         if(data.path){
@@ -29,7 +33,7 @@ window.toastr.options = {
   progressBar: true,
   hideMethod: "slideUp",
   closeButton: true,
-  timeOut: 60000,
+  timeOut: 0,
   extendedTimeOut: 10000,
   hideDuration: 300,
 }
