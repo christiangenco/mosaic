@@ -36,7 +36,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  config.action_cable.allowed_request_origins = ['https://mosaic.apps.gen.co/']
+  config.action_cable.allowed_request_origins = ['https://mosaic.apps.gen.co/', "https://mosaic.apps.gen.co"]
   config.action_cable.url = 'wss://mosaic.apps.gen.co/cable'
   # config.web_socket_server_url = "wss://mosaic.apps.gen.co/cable"
 
