@@ -12,15 +12,26 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+# development:
+#   adapter:  postgresql
+#   host:     localhost
+#   encoding: unicode
+#   database: mosaic_development
+#   pool:     5
+#   username: mosaic
+#   password:
+#   template: template0
+
 development:
-  adapter:  postgresql
-  host:     localhost
-  encoding: unicode
-  database: mosaic_development
-  pool:     5
-  username: mosaic
-  password:
-  template: template0
+  url: postgres://postgres:68e3f1befe1e6cabe4d4c209ec78754d@apps.gen.co:21885/mosaic_db
+  # adapter:  postgresql
+  # host:     localhost
+  # encoding: unicode
+  # database:
+  # pool:     5
+  # username: mosaic
+  # password:
+  # template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have

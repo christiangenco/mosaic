@@ -1,4 +1,10 @@
 <% @submissions.each do |challenge_id, submissions| %>
-  <h2><%= link_to submissions.first.challenge.name, challenge_path(challenge_id) %></h2>
-  <%= render 'submissions/list', submissions: submissions %>
-<% end %>
+  <% challenge = Challenge.find(challenge_id) %>
+    <h2><%= link_to challenge.name, challenge_path(challenge_id) %></h2>
+
+    <% unless challenge.challenge.blank? %>
+      <%= markdown(challenge.challenge).html_safe %>
+    <% end %>
+
+    <%= render 'submissions/list', submissions: submissions %>
+  <% end %>

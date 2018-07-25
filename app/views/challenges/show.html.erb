@@ -1,82 +1,89 @@
 <%# render 'breadcrumbs', challenge: @challenge %>
 
-<h1>
-  <% if admin? %>
-    <div class="pull-right">
-      <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-default" %>
-      <%= link_to 'Destroy', @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-    </div>
-  <% end %>
+  <h1>
+    <% if admin? %>
+      <div class="pull-right">
+        <%= link_to 'Edit', edit_challenge_path(@challenge), class: "btn btn-default" %>
+        <%= link_to 'Destroy', @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    <% end %>
 
-  <%= @challenge.title %>
-</h1>
+    <%= @challenge.title %>
+  </h1>
 
-<div>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist" style="display: none">
-    <li role="presentation" class="active"><a href="#instructions" aria-controls="instructions" role="tab" data-toggle="tab">
-      <%= fa_icon('book') %>
-      Instructions
-    </a></li>
-    <li role="presentation"><a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">
-      <%= fa_icon('comments') %>
-      Questions
-    </a></li>
-    <li role="presentation"><a href="#solutions" aria-controls="solutions" role="tab" data-toggle="tab">
-      <%= fa_icon('trophy') %>
-      Solutions
-      <span class="badge"><%= @challenge.submissions_count %></span>
-    </a></li>
-  </ul>
+  <div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist" style="display: none">
+      <li role="presentation" class="active">
+        <a href="#instructions" aria-controls="instructions" role="tab" data-toggle="tab">
+          <%= fa_icon('book') %>
+          Instructions
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#questions" aria-controls="questions" role="tab" data-toggle="tab">
+          <%= fa_icon('comments') %>
+          Questions
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#solutions" aria-controls="solutions" role="tab" data-toggle="tab">
+          <%= fa_icon('trophy') %>
+          Solutions
+          <span class="badge"><%= @challenge.submissions_count %></span>
+        </a>
+      </li>
+    </ul>
 
-  <br>
+    <br>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="instructions">
-      <div class="row">
-        <div class="challenge-description col-md-8">
-          <%= markdown(@challenge.description).html_safe %>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="instructions">
+        <div class="row">
+          <div class="challenge-description col-md-8">
+            <%= markdown(@challenge.description).html_safe %>
 
-          <%=
-            render 'submissions/form',
-            challenge: @challenge,
-            submission: Submission.new
-          %>
+            <% unless @challenge.challenge.blank? %>
+              <hr/>
+              <h2>Challenge</h2>
+              <%= markdown(@challenge.challenge).html_safe %>
+            <% end %>
 
-          <hr/>
+            <%= render 'submissions/form', challenge: @challenge, submission: Submission.new %>
 
-          <h2>Solutions</h2>
+            <hr/>
 
-          <% if current_user && (admin? || current_user.cached_submission_points.has_key?(@challenge.id)) %>
-            <%= render 'submissions/list', submissions: @submissions %>
-          <% else %>
-            <p>Try this challenge on your own first, then come back here to see other people's solutions.</p>
-          <% end %>
+            <h2>Solutions</h2>
+
+            <% if current_user && (admin? || current_user.cached_submission_points.has_key?(@challenge.id)) %>
+              <%= render 'submissions/list', submissions: @submissions %>
+            <% else %>
+              <p>Try this challenge on your own first, then come back here to see other people's solutions.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="questions">
+        <div class="row">
+          <div class="col-md-8">
+            <%= render 'comments/list', comments: @comments, commentable_id: @challenge.id, commentable_type: @challenge.class %>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="solutions">
+        <div class="row">
+          <div class="col-md-8">
+            <% if current_user && (admin? || current_user.cached_submission_points.has_key?(@challenge.id)) %>
+              <%= render 'submissions/list', submissions: @submissions %>
+            <% else %>
+              <p>Try this challenge on your own first, then come back here to see other people's solutions.</p>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="questions">
-      <div class="row">
-        <div class="col-md-8">
-          <%= render 'comments/list', comments: @comments, commentable_id: @challenge.id, commentable_type: @challenge.class %>
-        </div>
-      </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="solutions">
-      <div class="row">
-        <div class="col-md-8">
-          <% if current_user && (admin? || current_user.cached_submission_points.has_key?(@challenge.id)) %>
-            <%= render 'submissions/list', submissions: @submissions %>
-          <% else %>
-            <p>Try this challenge on your own first, then come back here to see other people's solutions.</p>
-          <% end %>
-        </div>
-      </div>
-    </div>
+
   </div>
 
-</div>
-
-
-<%# render 'submissions/list', submissions: @submissions %>
+  <%# render 'submissions/list', submissions: @submissions %>

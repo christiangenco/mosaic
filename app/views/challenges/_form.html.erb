@@ -1,11 +1,12 @@
 <% categories = ["00 HTML", "01 CSS", "02 Javascript", "03 Mobile", "04 Hacking", "05 Games", "06 Toys", "07 Puzzles", "08 Tools", "08 Webmastering", "09 Business"] %>
 
-<%= bootstrap_form_for(challenge) do |f| %>
+  <%= bootstrap_form_for(challenge) do |f| %>
   <%= f.text_field :name %>
   <%= f.select :category, categories, { label: "Categry:" } %>
   <%= f.check_box :is_locked %>
   <%= f.number_field :points %>
   <%= f.text_area :description, markdown: true %>
+  <%= f.text_area :challenge, markdown: true %>
   <%= f.submit "Save", class: "btn btn-lg btn-primary" %>
   <%= link_to 'Cancel', challenge.new_record? ? challenges_path : challenge, class: "btn btn-lg btn-default" %>
 <% end %>

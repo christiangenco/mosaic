@@ -1,6 +1,12 @@
 <h1><%= link_to "#{@challenge.title}", @challenge %></h1>
 
+hello world
+
+<% unless @challenge.challenge.blank? %>
+  <%= markdown(@challenge.challenge).html_safe %>
+<% end %>
+
 <%= render 'submissions/list_item', submission: @submission %>
-<br />
+<br/>
 
 <%= render 'comments/list', comments: @submission.comments, commentable_id: @submission.id, commentable_type: @submission.class %>
