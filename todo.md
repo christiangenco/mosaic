@@ -22,6 +22,13 @@
 
 ---
 
+# 2018-07-27 Feedback
+
+* don't just let people start; tell them to start at the beginning
+*
+
+---
+
 # Inbox
 
 * way to submit surveys?
