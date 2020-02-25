@@ -4,7 +4,7 @@ ruby '2.6.3'
 gem 'rails', '~> 5.0.0'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem "font-awesome-rails"
 gem 'bootstrap_form'
 gem 'redcarpet'
